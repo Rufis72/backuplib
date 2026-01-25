@@ -12,10 +12,11 @@ Every node can also have children, which can be added with the add_child method.
 
 
 Every node when ran has some parameters that can be passed in, such as output_path, environment_variables, and verbosity. The values for this will also be passed to children node when run.
-These values can be overwritten when initialisng and object to allow for nodes to have different values. For more info, refer to :doc:`node_behavior/overwriting_run_parameters`
+These values can be overwritten when initialisng and object to allow for nodes to have different values. For more info, refer to :doc:`nodes/node_behavior/overwriting_run_parameters`
 
 .. toctree::
    :maxdepth: 2
 
-   nodes/base_node
+   nodes/node_behavior
+   nodes/node_objects
 

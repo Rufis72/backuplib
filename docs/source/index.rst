@@ -13,4 +13,3 @@ Welcome to the backuplib docs! To get an overview check out :doc:`quickstart`
 
    nodes
    quickstart
-   node_behavior
