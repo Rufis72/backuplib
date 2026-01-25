@@ -24,7 +24,8 @@ Thankfuly, there is a way to overwrite those parameters. When initialising an ob
         environment_variables = {'this': 'will be overwritten'}
     )
 
-Sometimes, you won't want to overwrite a parameter, instead you might want to add to what's passed to run instead. For example, if you want to add to the current output_path, like to put the output into a seperate folder, you can do './folder', like shown here:
+Sometimes, you won't want to overwrite a parameter, instead you might want to add to what's passed to run instead. 
+For example, if you want to add to the current output_path, like to put the output into a seperate folder, you can do add a '.' to the beginning, like shown here:
 
 .. code-block:: python
 
@@ -33,7 +34,7 @@ Sometimes, you won't want to overwrite a parameter, instead you might want to ad
     # initialising a GenericNode
     # if you want to add to the environment_variables, instead of overwriting them, you need to pass add_to_environment_variables as True
     example_node = GenericNode(
-        output_path = './folder',
+        output_path = './example/folder',
     )
 
     # running the node
