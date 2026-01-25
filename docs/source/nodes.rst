@@ -12,23 +12,7 @@ Every node can also have children, which can be added with the add_child method.
 
 
 Every node when ran has some parameters that can be passed in, such as output_path, environment_variables, and verbosity. The values for this will also be passed to children node when run.
-These values can be overwritten when initialisng and object to allow for nodes to have different values
-::
-    from backuplib.generic import GenericNode
-
-    # initialising a GenericNode with an environment_variable
-    example_node = GenericNode(
-        environment_variables = {'example environment variable': 'value'}
-        )
-
-    # running the node with a specified verbosity and environment_variables
-    # the verbosity will be used, but the environment_variables will be overwritten because we
-    # passed some environment variables when initialising the example node above
-    example_node.run(
-        output_path = './example_backup_directory',
-        verbosity = 1,
-        environment_variables = {'this': 'will be overwritten'},
-    )
+These values can be overwritten when initialisng and object to allow for nodes to have different values. For more info, refer to :doc:`node_behavior/overwriting_run_parameters`
 
 .. toctree::
    :maxdepth: 2
