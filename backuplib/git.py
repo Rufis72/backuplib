@@ -63,3 +63,6 @@ class GitClone(GenericNode):
         # if subcommand couldn't find git, we raise an error around it not being able to find git on path/a git executable in the cwd
         except FileNotFoundError:
             raise DependencyNotFoundError(f'Failed to run \'{git_commad} clone\'. Are you sure git\'s on path/a valid path to a git executable?')
+        
+        # running the child nodes
+        self.run_children(output_path, verbosity, environment_variables)
