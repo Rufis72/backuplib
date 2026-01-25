@@ -1,6 +1,6 @@
 Overwriting Run Parameters 
 =========================
-All nodes have the run method, which executes the logic for that node. When run a node, you can pass parameters such as environment_variables, output_path, and verbosity. (Refer to :doc:`/the_run_method` for a full list)
+All nodes have the run method, which executes the logic for that node. When run a node, you can pass parameters such as environment_variables, output_path, and verbosity. (Refer to :doc:`the_run_method` for a full list)
 The issue is, sometimes you don't want every node to run with the exact same parameters. You may, for example, want to have a specific environment variable when building a c project with cmake, but then not want that when building another.
 And, if you want to run everything from a root node, that calls run on it's children, and those children call run on their children and so on, then there's no way to specify these parameters with the run method.
 
