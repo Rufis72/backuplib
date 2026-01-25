@@ -122,6 +122,18 @@ class GenericNode:
         :param environment_variables: The environment variables used when running shell command(s)
         :type environment_variables: dict[str, str]
         '''
+        # this node doesn't have any behavior specific to the node
+        # so we just run the children
+        # first we get the final parameters to use
+        run_parameters = self.get_run_parameters(output_path, verbosity, environment_variables)
+
+        # now we get the variables from the dict it returns
+        output_path = run_parameters.get('output_path')
+        verbosity = run_parameters.get('verbosity')
+        environment_variables = run_parameters.get('environment_variables')
+
+        # now we run the children
+        self.run_children(output_path, verbosity, environment_variables)
 
     
     def run_children(
