@@ -1,5 +1,5 @@
 The Run method
-===============
+========================
 
 The run method is the method used to run the logic of a node, which should be implemented uniquely for each node.
 
