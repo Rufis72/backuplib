@@ -1,7 +1,7 @@
 from typing import Union
 import os
 
-class MethodNotImplementedError(Exception):
+class DependencyNotFoundError(Exception):
     pass
 
 class GenericNode:
@@ -29,6 +29,10 @@ class GenericNode:
         self.verbosity = verbosity
         self.environment_variables = environment_variables
         self.add_to_environment_variables = add_to_environment_variables
+
+        # making sure the passed output path wasn't a blank string
+        if output_path == '':
+            raise Exception('Output path should not be an empty string. If you want to have it be the working directory, you can not pass output_path at all.')
 
         # making a variable to store children
         self.children = []
@@ -110,9 +114,9 @@ class GenericNode:
     
     def run(
             self,
-            output_path: str, 
-            verbosity: int, 
-            environment_variables: dict[str, str]
+            output_path: str = None, 
+            verbosity: int = 1, 
+            environment_variables: dict[str, str] = {}
             ):
         '''
         :param output_path: The path where the gathered data for this node will be outputted
