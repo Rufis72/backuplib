@@ -1,4 +1,4 @@
-Git Clone 
+GitClone 
 ===========
 
 This object runs ``git clone``, with some extra features.

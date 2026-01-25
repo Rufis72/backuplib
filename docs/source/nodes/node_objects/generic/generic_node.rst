@@ -1,4 +1,4 @@
-Base Node
+GenericNode
 =======================
 
 The base node is the generic class for every node if you look at any node's superclass far enough.
