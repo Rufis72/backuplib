@@ -24,10 +24,14 @@ class GenericNode:
         :type add_to_environment_variables: bool
         :param add_to_environment_variables: If the environ variables passed here should overwrite, or add to the environment variables passed in self.run. By default False (it overwrites the ones passed in self.run)
         '''
+        # saving the passed in parameters
         self.output_path = output_path
         self.verbosity = verbosity
         self.environment_variables = environment_variables
         self.add_to_environment_variables = add_to_environment_variables
+
+        # making a variable to store children
+        self.children = []
 
 
     def get_run_parameters(self, run_output_path: str, run_verbosity: int, run_environment_variables: dict[str, str]) -> dict[str, Union[str, int, dict[str, str]]]:
@@ -105,6 +109,7 @@ class GenericNode:
 
     
     def run(
+            self,
             output_path: str, 
             verbosity: int, 
             environment_variables: dict[str, str]
@@ -117,3 +122,71 @@ class GenericNode:
         :param environment_variables: The environment variables used when running shell command(s)
         :type environment_variables: dict[str, str]
         '''
+
+    
+    def run_children(
+            self,
+            output_path: str,
+            verbosity: int,
+            environment_variables: dict[str, str]
+            ):
+        '''
+        This calls run on all the children of this node, with the passed in parameters
+
+        :param output_path: The path where the gathered data for this node will be outputted
+        :type output_path: str
+        :param verbosity: How detailed the ouput text should be. Goes on a scale from 0-2, where 0 is none, 1 is the normal amount of information (for whatever that is for the node), and 2 is 1 but with more detail, and more updates
+        :type verbosity: int
+        :param environment_variables: The environment variables used when running shell command(s)
+        :type environment_variables: dict[str, str]
+        '''
+        for child in self.children:
+            child.run(
+                output_path,
+                verbosity,
+                environment_variables
+            )
+
+    
+    def add_child(self, child):
+        '''
+        This adds an object as a child for this node
+        Children are objects that will be run when this node is run. They'll also have the run parameters passed to them when run
+        
+        :param child: The object to add as a child
+        '''
+        self.children.append(child)
+
+
+    def add_children(self, children: list):
+        '''
+        This joins a list of children at the end of this node's list of children. (self.children)
+        
+        :param children: The list of objects to add as children
+        :type children: list
+        '''
+        self.children.extend(children)
+
+
+    def insert_child(self, index: int, child):
+        '''
+        Inserts an object to a specific index for the list of children
+        
+        :param index: The index at where to insert the child at
+        :type index: int
+        :param child: The object to be inserted into the list of children
+        '''
+        self.children.insert(index, child)
+
+
+    def insert_children(self, index, children: list):
+        '''
+        Inserts multiple children at an index for the list of children for this node
+        
+        :param self: Description
+        :param index: Description
+        :param children: Description
+        :type children: list
+        '''
+        for child in children.reverse():
+            self.children.insert(index, child)
