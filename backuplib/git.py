@@ -17,7 +17,7 @@ class GitClone(GenericNode):
         self.url = url
         super().__init__(output_path, verbosity, environment_variables)
 
-    def run(self, output_path: str = None, make_directory_for_cloned_repo: bool = True, git_commad: str = 'git', verbosity: int = None, environment_variables: dict[str, str] = None):
+    def run(self, output_path: str = None, verbosity: int = None,  environment_variables: dict[str, str] = None, make_directory_for_cloned_repo: bool = True, git_commad: str = 'git'):
         '''
         Clones a git repo at a specified url. (The url is passed in __init__)
 
