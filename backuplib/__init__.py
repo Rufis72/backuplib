@@ -1,4 +1,5 @@
 __all__ = [
     'generic',
-    'git'
+    'git',
+    'shell',
 ]
