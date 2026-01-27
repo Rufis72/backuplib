@@ -4,13 +4,13 @@ import subprocess
 class BashCommand(GenericNode):
     def __init__(self, command: str, output_path: str = None, verbosity: int = None, environment_variables: dict[str, str] = None):
         '''
-        :param command: The bash command to run. Can be seperated by new line characters, or semicolons to run multiple commands
+        :param command: The bash command(s) to run. Can be seperated by new line characters, or semicolons to run multiple commands
         :type command: str
-        :param output_path: The path where the git repo will be cloned too
+        :param output_path: The current working directory for the bash command(s) to be run
         :type output_path: str
         :param verbosity: How detailed the ouput text should be. Goes on a scale from 0-2, where 0 is none, 1 is the normal amount of information (for whatever that is for the node), and 2 is 1 but with more detail, and more updates
         :type verbosity: int
-        :param environment_variables: The environment variables used when running git clone
+        :param environment_variables: The environment variables used when running the bash command(s)
         :type environment_variables: dict[str, str]
         '''
         self.command = command
@@ -22,8 +22,6 @@ class BashCommand(GenericNode):
 
         :param output_path: The path where the bash command(s) will be run
         :type output_path: str
-        :param git_command: The command to run bash. Can also be a path to a bash executable if bash is not on path/you don't want to use the bash on path
-        :type git_command: str
         :param verbosity: How detailed the ouput text should be. Goes on a scale from 0-2, where 0 is none, 1 is the normal amount of information (for whatever that is for the node), and 2 is 1 but with more detail, and more updates
         :type verbosity: int
         :param environment_variables: The environment variables used when running the bash command(s)
@@ -56,11 +54,11 @@ class BashScript(GenericNode):
         '''
         :param script_path: The path to the bash script to run
         :type script_path: str
-        :param output_path: The path where the git repo will be cloned too
+        :param output_path: The current working directory for the bash script to be run in
         :type output_path: str
         :param verbosity: How detailed the ouput text should be. Goes on a scale from 0-2, where 0 is none, 1 is the normal amount of information (for whatever that is for the node), and 2 is 1 but with more detail, and more updates
         :type verbosity: int
-        :param environment_variables: The environment variables used when running git clone
+        :param environment_variables: The environment variables used when running the bash script
         :type environment_variables: dict[str, str]
         '''
         self.script_path = script_path
@@ -72,8 +70,6 @@ class BashScript(GenericNode):
 
         :param output_path: The path where the bash script will be run
         :type output_path: str
-        :param git_command: The command to run bash. Can also be a path to a bash executable if bash is not on path/you don't want to use the bash on path
-        :type git_command: str
         :param verbosity: How detailed the ouput text should be. Goes on a scale from 0-2, where 0 is none, 1 is the normal amount of information (for whatever that is for the node), and 2 is 1 but with more detail, and more updates
         :type verbosity: int
         :param environment_variables: The environment variables used when running the bash command(s)
