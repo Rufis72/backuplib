@@ -204,5 +204,5 @@ class GenericNode:
         :param children: Description
         :type children: list
         '''
-        for child in children.reverse():
+        for child in reversed(children):
             self.children.insert(index, child)
