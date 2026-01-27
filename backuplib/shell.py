@@ -6,7 +6,7 @@ class BashCommand(GenericNode):
         '''
         :param command: The bash command(s) to run. Can be seperated by new line characters, or semicolons to run multiple commands
         :type command: str
-        :param output_path: The current working directory for the bash command(s) to be run
+        :param output_path: The working directory for the bash command(s) to be run
         :type output_path: str
         :param verbosity: How detailed the ouput text should be. Goes on a scale from 0-2, where 0 is none, 1 is the normal amount of information (for whatever that is for the node), and 2 is 1 but with more detail, and more updates
         :type verbosity: int
@@ -46,7 +46,7 @@ class BashCommand(GenericNode):
         try:
             subprocess.run([bash_commad, '-c', self.command, verbosity_suffix], cwd=output_path, env=environment_variables, capture_output=verbosity==0)
         except FileNotFoundError:
-            raise DependencyNotFoundError(f'Failed to run \'{bash_commad} clone\'. Are you sure bash\'s on path/{bash_commad} is a valid path to a bash executable?')
+            raise DependencyNotFoundError(f'Got Errno 2 when trying to run \'{bash_commad} clone\'. Are you sure bash\'s on path/{bash_commad} is a valid path to a bash executable?')
         
 
 class BashScript(GenericNode):
@@ -54,7 +54,7 @@ class BashScript(GenericNode):
         '''
         :param script_path: The path to the bash script to run
         :type script_path: str
-        :param output_path: The current working directory for the bash script to be run in
+        :param output_path: The working directory for the bash script to be run in
         :type output_path: str
         :param verbosity: How detailed the ouput text should be. Goes on a scale from 0-2, where 0 is none, 1 is the normal amount of information (for whatever that is for the node), and 2 is 1 but with more detail, and more updates
         :type verbosity: int
@@ -90,11 +90,11 @@ class BashScript(GenericNode):
         if verbosity == 2:
             verbosity_suffix = '--verbose'
 
-        # now we run the bash command(s)
+        # now we run the bash script
         try:
             subprocess.run([bash_commad, self.script_path, verbosity_suffix], cwd=output_path, env=environment_variables, capture_output=verbosity==0)
         except FileNotFoundError:
-            raise DependencyNotFoundError(f'Failed to run \'{bash_commad} clone\'. Are you sure bash\'s on path/{bash_commad} is a valid path to a bash executable?')
+            raise DependencyNotFoundError(f'Got Errno 2 when trying to run \'{bash_commad} {self.script_path}\'. Are you sure bash\'s on path/{bash_commad} is a valid path to a bash executable?')
         
 
 class ZshCommand(GenericNode):
@@ -102,7 +102,7 @@ class ZshCommand(GenericNode):
         '''
         :param command: The zsh command(s) to run. Can be seperated by new line characters, or semicolons to run multiple commands
         :type command: str
-        :param output_path: The current working directory where the zsh command(s) will be run
+        :param output_path: The working directory where the zsh command(s) will be run
         :type output_path: str
         :param verbosity: How detailed the ouput text should be. Goes on a scale from 0-2, where 0 is none, 1 is the normal amount of information (for whatever that is for the node), and 2 is 1 but with more detail, and more updates
         :type verbosity: int
@@ -140,11 +140,11 @@ class ZshCommand(GenericNode):
         if verbosity == 2:
             verbosity_suffix = '--verbose'
 
-        # now we run the bash command(s)
+        # now we run the zsh command(s)
         try:
             subprocess.run([zsh_commad, '-c', self.command, verbosity_suffix], cwd=output_path, env=environment_variables, capture_output=verbosity==0)
         except FileNotFoundError:
-            raise DependencyNotFoundError(f'Failed to run \'{zsh_commad} clone\'. Are you sure zsh\'s on path/{zsh_commad} is a valid path to a zsh executable?')
+            raise DependencyNotFoundError(f'Got Errno 2 when trying to run \'{zsh_commad} clone\'. Are you sure zsh\'s on path/{zsh_commad} is a valid path to a zsh executable?')
         
 
 class ZshScript(GenericNode):
@@ -152,7 +152,7 @@ class ZshScript(GenericNode):
         '''
         :param script_path: The path to the zsh script to run
         :type script_path: str
-        :param output_path: The current working directory where the zsh script will be run
+        :param output_path: The working directory where the zsh script will be run
         :type output_path: str
         :param verbosity: How detailed the ouput text should be. Goes on a scale from 0-2, where 0 is none, 1 is the normal amount of information (for whatever that is for the node), and 2 is 1 but with more detail, and more updates
         :type verbosity: int
@@ -190,8 +190,8 @@ class ZshScript(GenericNode):
         if verbosity == 2:
             verbosity_suffix = '--verbose'
 
-        # now we run the bash command(s)
+        # now we run the zsh command(s)
         try:
             subprocess.run([zsh_commad, self.script_path, verbosity_suffix], cwd=output_path, env=environment_variables, capture_output=verbosity==0)
         except FileNotFoundError:
-            raise DependencyNotFoundError(f'Failed to run \'{zsh_commad} {self.script_path}\'. Are you sure zsh\'s on path/{zsh_commadd} is a valid path to a zsh executable?')
+            raise DependencyNotFoundError(f'Got Errno 2 when trying to run \'{zsh_commad} {self.script_path}\'. Are you sure zsh\'s on path/{zsh_commadd} is a valid path to a zsh executable?')
