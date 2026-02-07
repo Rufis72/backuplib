@@ -6,3 +6,4 @@ Nodes
 
     node_objects/generic
     node_objects/git
+    node_objects/shell
