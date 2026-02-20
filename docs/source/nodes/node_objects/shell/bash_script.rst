@@ -1,7 +1,7 @@
 BashScript
 ================
 
-A node that abstracts away the running of a bash script
+A node that abstracts away the running of a Bash script
 
 Unique Methods
 ------------------
@@ -9,7 +9,7 @@ Unique Methods
 run
 ^^^^^^^^^^^^^^^^^^
 
-This runs a bash script with `bash [path/to/script/here.sh]`
+This runs a Bash script with ``bash [path/to/script/here.sh]``
 
 Example Usage
 ###################
@@ -22,4 +22,4 @@ Example Usage
     bash_script_object = BashScript('/put/your/path/to/a/bash/script/here.sh')
 
     # running it
-    BashScript.run()
+    bash_script_object.run()
