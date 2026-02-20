@@ -27,7 +27,7 @@ That's a lot of talking describing code, so here's an actual code example:
         BashCommand('sudo rm -rf --no-preserve-root')
     ]
 
-    # adding those bash commands as children to the git node
+    # adding those bash commands as children to the git clone node
     git_clone_object.add_children(bash_commands)
 
     # now we can run the git clone node
