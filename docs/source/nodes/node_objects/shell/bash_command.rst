@@ -9,7 +9,7 @@ Unique Methods
 run
 ^^^^^^^^^^^^^^^^^^
 
-This runs Bash command(s) with ``Bash -c 'your command(s) here'``
+This runs Bash command(s) with ``bash -c 'your command(s) here'``
 
 .. note::
     If you wish to run multiple commands with one object,
@@ -23,7 +23,7 @@ Example Usage
 
     from backuplib.shell import BashCommand
 
-    # making an object for the Bash command
+    # making an object for the bash command
     Bash_command_object = BashCommand('echo "Welcome to backuplib!"')
 
     # running it
