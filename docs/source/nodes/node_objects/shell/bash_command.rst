@@ -28,3 +28,12 @@ Example Usage
 
     # running it
     Bash_command_object.run()
+
+Parameters
+##################
+
+output_path: The path where the bash command(s) will be run
+
+erbosity: How detailed the ouput text should be. Goes on a scale from 0-2, where 0 is none, 1 is the normal amount of information (for whatever that is for the node), and 2 is 1 but with more detail, and more updates
+
+environment_variables: The environment variables used when running the bash command(s)

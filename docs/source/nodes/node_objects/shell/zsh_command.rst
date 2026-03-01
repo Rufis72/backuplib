@@ -28,3 +28,14 @@ Example Usage
 
     # running it
     zsh_command_object.run()
+
+Parameters
+################
+
+command: The zsh command(s) to run. Can be seperated by new line characters, or semicolons to run multiple commands
+
+output_path: The working directory where the zsh command(s) will be run
+
+verbosity: How detailed the ouput text should be. Goes on a scale from 0-2, where 0 is none, 1 is the normal amount of information (for whatever that is for the node), and 2 is 1 but with more detail, and more updates
+
+environment_variables: The environment variables used when running the zsh command(s)
