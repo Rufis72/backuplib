@@ -1,5 +1,7 @@
+from util.destinations import LocalDestination, RemoteDestination
+
 __all__ = [
-    'generic',
-    'git',
-    'shell',
+    LocalDestination,
+    RemoteDestination,
+    'nodes'
 ]
