@@ -1,7 +1,9 @@
 Git
 ============
 
-These are the nodes intended for use with `Git <https://git-scm.com/>`.
+These are the nodes intended for use with `Git`_.
+
+.. _Git: https://git-scm.com
 
 .. toctree::
     :maxdepth: 1
