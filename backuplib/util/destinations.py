@@ -122,9 +122,3 @@ class RemoteDestination:
 
         # returning an object that you can edit
         return self.sftp_session.file(path, mode)
-        
-destination = RemoteDestination()
-destination.connect('192.168.1.63', 'notarchbtw', 'password', trust_host_if_host_key_is_missing=True)
-destination.exec_command('touch "hello.txt"', cwd='/home/notarchbtw/a')
-with destination.open_file('/home/notarchbtw/a/hello.txt', 'rw') as f:
-    f.write('Hey folks, in today\'s video, we\'re back with more Gold Stake Balatro.')
