@@ -75,6 +75,17 @@ class RemoteDestination:
         # doing the actual connection
         self.client.connect(hostname, port, username, password)
 
+
+    def open_sftp_session(self):
+        '''Opens a SFTP session.
+        
+        The SFTP session is stored at self.sftp_session, and should be reused to prevent making more connections then necessary
+        
+        If a connection has already been made, it will not create a new one'''
+        if self.sftp_session is None:
+            self.sftp_session = self.client.open_sftp()
+
+
     def exec_command(self, command: str, cwd: str = None, env: dict[str, str] = None) -> tuple[bytes, bytes]:
         '''Runs a command on the remote machine
 
@@ -107,8 +118,7 @@ class RemoteDestination:
     
     def open_file(self, path: str, mode: str = 'r') -> paramiko.SFTPFile:
         # opening an sftp session if we haven't already
-        if self.sftp_session is None:
-            self.sftp_session = self.client.open_sftp()
+        self.open_sftp_session()
 
         # returning an object that you can edit
         return self.sftp_session.file(path, mode)
