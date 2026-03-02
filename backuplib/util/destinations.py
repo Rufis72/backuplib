@@ -1,8 +1,6 @@
 import paramiko
 import subprocess, os
 
-client = paramiko.SSHClient()
-
 class LocalDestination:
     '''Serves as a wrapper for doing anything that may interact with the filesystem on the local machine'''
 
