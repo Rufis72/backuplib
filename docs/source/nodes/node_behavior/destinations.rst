@@ -41,7 +41,8 @@ This is not by design, it's just that implementing everything takes some time.
 Parameters
 ###############
 
-:
+:path: The path to the file to open
+:mode: The mode to open the file in. Refer to the builtin docs for open for the list of modes, and how they work
 
 
 
